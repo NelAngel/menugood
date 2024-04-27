@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu y Sorteo</title>
+    <link rel="stylesheet" href="stylesmenu.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1{
+
+    text-align: center;
+    
+}
+
+.container {
+    max-width: 650px;
+    margin: 5px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 55px;
+}
+
+input[type="text"], textarea {
+    width: calc(100% - 20px); /* El ancho total menos el espacio de padding */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #eb8d00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #eb8d00;
+}
+
+.tarjeta {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 120px;
+    height: 170px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease; /* Agregamos una transición para suavizar el efecto */
+    font-family: 'Times New Roman', Times, serif; /* Cambia el tipo de letra aquí */
+}
+
+#contenedor-tarjetas {
+    text-align: center; /* Centra horizontalmente las tarjetas */
+}
+
+/* Agregamos una clase para la animación de mezcla */
+.mezcla {
+    animation: mezcla 1s ease-in-out forwards;
+}
+
+@keyframes mezcla {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+</style>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="text logo">
+                <span class="name">SPARTAN GAME</span>
+                <span class="ANGEL">NelAngel</span>
+            </div>
+            <i class="bx bx-menu toggle"></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class="bx bx-search icon"></i>
+                    <input type="text" placeholder="Buscar....">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="index.html">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="text nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-bar-chart-alt-2 icon"></i>
+                            <span class="text nav-text">Competencias</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-bell icon"></i>
+                            <span class="text nav-text">Notificaciones</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-heart icon"></i>
+                            <span class="text nav-text">Me gustas</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="sorteo.html">
+                            <i class="bx bxs-trophy icon"></i> <!-- Icono de copa -->
+                            <span class="text nav-text">Sorteo</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-group icon"></i>
+                            <span class="text nav-text">Miembros</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class="bx bx-log-out icon"></i>
+                        <span class="text nav-text">Salir</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class="bx bx-moon icon moon"></i>
+                        <i class="bx bx-sun icon sun"></i>
+                    </div>
+                    <span class="mode-text text">Modo Oscuro</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="clan-description">
+                <!-- Contenido del sorteo -->
+                <h1>Sorteo Para el pase de Batalla</h1>
+                <label for="nombre">Ingresa el nombre de cada participante (uno por línea):</label>
+                <textarea id="nombres" placeholder="Por favor ingrese aqui los participantes, separados por filas por ejemplo: 
+                 - Usuario 1
+                 - Usuario 2
+                 " rows="4"></textarea>
+                <button onclick="agregarParticipantes()">Agregar</button>
+                <h2>Participantes:</h2>
+                <div id="contenedor-tarjetas"></div>
+                <button onclick="realizarSorteo()">Realizar Sorteo</button>
+                <h2>Ganador:</h2>
+                <p id="ganador"></p>
+            </div>
+        </div>
+    </div>
+    <script src="scriptmenu.js"></script>
+    <script src="scriptsorteo.js"></script>
+</body>
+</html>
